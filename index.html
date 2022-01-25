@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sortameal</title>
+    <title>Sort A Meal | Categories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/96894b11db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    
+    <header class="pt-2 px-2 h-32">
+        <i class="float-right p-3 text-4xl fas fa-home"></i>
+        <i class="float-right p-3 text-4xl fas fa-heart"></i>
+    </header>
+    <section class="">
+        <section class="text-center categories content-center grid grid-cols-2 md:grid-cols-3 grid-rows-3 gap-8 gap-y-12">
+            <div id="burgers" class="rounded-2xl shadow-xl shadow-slate-500">
+                <h2 class="cat h-12 pb-3 bg-white bg-opacity-75 ">Burgers</h2>
+            </div>
+            <div id="indian" class="rounded-2xl shadow-xl shadow-slate-500">
+                <h2 class="cat h-12 pb-3 bg-white bg-opacity-75">Indian</h2>
+            </div>
+            <div id="asian" class="rounded-2xl shadow-xl shadow-slate-500">
+                <h2 class="cat h-12 pb-3 bg-white bg-opacity-75">Asian</h2>
+            </div>
+            <div id="pizza" class="rounded-2xl shadow-xl shadow-slate-500">
+                <h2 class="cat h-12 pb-3 bg-white bg-opacity-75">Pizza</h2>
+            </div>
+            <div id="thai" class="rounded-2xl shadow-xl shadow-slate-500">
+                <h2 class="cat h-12 pb-3 bg-white bg-opacity-75">Thai</h2>
+            </div>
+            <div id="pasta" class="rounded-2xl shadow-xl shadow-slate-500">
+                <h2 class="cat h-12 pb-3 bg-white bg-opacity-75">Pasta</h2>
+            </div>
+        </section>
+    </section>
+    <footer class="fixed bottom-0">
+        <i class="float-left p-10 text-4xl fas fa-arrow-circle-left"></i>
+    </footer>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
