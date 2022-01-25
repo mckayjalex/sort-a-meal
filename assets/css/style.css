@@ -58,4 +58,9 @@ i {
         margin-left: 10px;
         margin-right: 10px;
     }
+    .cat {
+        margin-top: 220px;
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
 }
