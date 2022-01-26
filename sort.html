@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortameal</title>
+    <!-- importing Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+    <!-- importing TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        offwhite: '#f8f8f8',
+                        maingreen: '#72b85f',
+                        maingreendark: '#5b984b',
+                        darkgreen: '#003f2c',
+                        mainred: '#e5622d',
+                    },
+                    fontFamily: {
+                        boogaloo: ['Boogaloo', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/8bffadcaaa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body class="bg-white">
+    <!-- header -->
+    <header class="flex w-full items-center justify-center p-4 bg-maingreen">
+        <img src="./assets/images/logo.svg" alt="" width="240px">
+
+    </header>
+
+    <!-- container -->
+    <main>
+        <section id="cards" class="container mx-auto p-4 justify-center text-center">
+            <!-- <img alt="" id="myImage"> -->
+            <!-- <div id="demoDiv" class="p-8 w-96 h-96 bg-black bg-cover mx-auto"></div> -->
+
+            <!-- <div id="restaurant-card"
+                class="inline-block w-96 p-4 mx-auto bg-maingreen rounded-2xl shadow-lg shadow-slate-400 hover:cursor-grab"
+                data-index="1">
+                <div class="relative p-4 border-8 border-darkgreen rounded-2xl bg-white">
+                    <div id="card-img" class="relative rounded-lg shadow-xl bg-grey-700 h-48 mb-6 bg-cover">
+                    </div>
+                    <div id="card-info" class="relative text-center">
+                        <h2 id="info-name" class="text-3xl text-darkgreen font-boogaloo uppercase mb-2">KFC -
+                            Springfield</h2>
+                        <p id="info-vicinity" class="pt-2 mb-2"><i class="fas fa-map-marker-alt"></i><span
+                                id="vicinity-data" class="pl-2">1 Main St,
+                                Springfield</span></p>
+                        <div class="flex justify-around py-4">
+                            <span id="info-ratings" class="py-2 text-white bg-green-600 px-4 rounded"><i
+                                    class="fas fa-star"></i><span id="ratings-data" class="pl-2">4.5</span>
+                            </span>
+                            <span id="info-status" class="py-2 uppercase text-white bg-lime-600 px-4 rounded">
+                                <i class="fas fa-door-open"></i><span id="status-data" class="pl-2">Open</span>
+                            </span>
+                        </div>
+                        <div class="mt-4 mb-3 text-darkgreen">
+                            <a id="info-details" class="border-4 border-darkgreen rounded-lg py-2 px-4" href=""><i
+                                    class="fas fa-info-circle"></i><span class="pl-2">View Info</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- tinder like cards -->
+            <!-- <div class="tinder">
+                <div class="tinder--status">
+                    <i class="fa fa-remove"></i>
+                    <i class="fa fa-heart"></i>
+                </div>
+
+                <div class="tinder--cards">
+                    <div class="tinder--card">
+                        <img src="https://placeimg.com/600/300/people">
+                        <h3>Demo card 1</h3>
+                        <p>This is a demo for Tinder like swipe cards</p>
+                    </div>
+                    <div class="tinder--card">
+                        <img src="https://placeimg.com/600/300/animals">
+                        <h3>Demo card 2</h3>
+                        <p>This is a demo for Tinder like swipe cards</p>
+                    </div>
+                    <div class="tinder--card">
+                        <img src="https://placeimg.com/600/300/nature">
+                        <h3>Demo card 3</h3>
+                        <p>This is a demo for Tinder like swipe cards</p>
+                    </div>
+                    <div class="tinder--card">
+                        <img src="https://placeimg.com/600/300/tech">
+                        <h3>Demo card 4</h3>
+                        <p>This is a demo for Tinder like swipe cards</p>
+                    </div>
+                    <div class="tinder--card">
+                        <img src="https://placeimg.com/600/300/arch">
+                        <h3>Demo card 5</h3>
+                        <p>This is a demo for Tinder like swipe cards</p>
+                    </div>
+                </div>
+
+                <div class="tinder--buttons">
+                    <button id="nope"><i class="fa fa-remove"></i></button>
+                    <button id="love"><i class="fa fa-heart"></i></button>
+                </div>
+            </div> -->
+
+        </section>
+    </main>
+
+    <!-- importing jQuery, HammerJS & Custom Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+        integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc&libraries=places"
+        async defer>
+    </script>
+    <!-- <script src="./assets/js/swipe.js"></script> -->
+    <script src="./assets/js/sort.js"></script>
+</body>
+
+</html>
