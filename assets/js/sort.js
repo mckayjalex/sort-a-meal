@@ -366,11 +366,11 @@ function fetchRecipes() {
 // helper functions
 // manage ratings color based on the value
 // update ratings box background color based on the value
-function setRestaurantImg(el, blob) {
-  let urlCreator = window.URL || window.webkitURL;
-  let img = urlCreator.createObjectURL(blob);
-  el.addClass(`bg-[url('${img}')]`);
-}
+// function setRestaurantImg(el, blob) {
+//   let urlCreator = window.URL || window.webkitURL;
+//   let img = urlCreator.createObjectURL(blob);
+//   el.addClass(`bg-[url('${img}')]`);
+// }
 function setRatingsBg(el, n) {
   if (n > 0 && n <= 1) {
     el.addClass("bg-red-700");
