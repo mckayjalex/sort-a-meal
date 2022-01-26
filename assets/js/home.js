@@ -23,18 +23,21 @@ function getUserLocation() {
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
-//once coodinates var has been set, allow onclick function for recipe and restarant
-
+//once coodinates variable has been set, allow onclick function for recipe and restarant
 //add recipe/restaurant url params to the end of url, then add coords to end
 
 $("#recipe").on("click", function () {
-  url = url + "?type=recipe";
-  url = url + `&coordinates=${coordinates}`;
-  window.location = url;
+  if (coordinates) {
+    url = url + "?type=recipe";
+    url = url + `&coordinates=${coordinates}`;
+    window.location = url;
+  } else alert("Location is not defined");
 });
 
 $("#restaurant").on("click", function () {
-  url = url + "?type=restaurant";
-  url = url + `&coordinates=${coordinates}`;
-  window.location = url;
+  if (coordinates) {
+    url = url + "?type=restaurant";
+    url = url + `&coordinates=${coordinates}`;
+    window.location = url;
+  } else alert("Location is not defined");
 });
