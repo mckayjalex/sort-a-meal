@@ -1,3 +1,5 @@
+// devine a variable for the url
+var url = "/categories.html";
 // define a variable for coordinates
 var coordinates;
 // get the user location to set the value for the variable
@@ -20,43 +22,18 @@ function getUserLocation() {
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
+//once coodinates var has been set, allow onclick function for recipe and restarant
+
+//add recipe/restaurant url params to the end of url, then add coords to end
 
 
 
+$("#recipe").on("click", function () {
+  url = url + "?type=recipe";
+  console.log(url);
+});
 
-// var sort = document.getElementById("sortbtn");
-
-// sort.addEventListener("click", text());
-
-// function test() {
-
-//     console.log("clicked")
-// }
-
-// test = 'https://www.sortameal.com/categories.html/type/restaurant/Calzon'
-// https://www.sortameal.com/index.html
-// https://www.sortameal.com/home.html
-// https://www.sortameal.com/categories.html/type/recipe/rice
-
-
-// document.location.href.split('/').reverse()[0]
-
-
-
-// /categories.html?type:restaurant
-
-
-// categories.html ? type : recipe
-
-// var item;
-// if(categories.html == true){
-//     item = type;
-// } else {
-//     item = recipe;
-// }
-
-// let x;
-
-// if(x > 0) {
-//     return 
-// }
+$("#restaurant").on("click", function () {
+  url = url + "?type=restaurant";
+  console.log(url);
+});
