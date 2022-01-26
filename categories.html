@@ -8,7 +8,7 @@
     <title>Sort A Meal | Categories</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/96894b11db.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -23,7 +23,10 @@
                         maingreendark: '#5b984b',
                         darkgreen: '#003f2c',
                         mainred: '#e5622d',
-                    }
+                    },
+                    fontFamily: {
+                        boogaloo: ['Boogaloo', 'sans-serif'],
+                    },
                 }
             }
         }
@@ -31,39 +34,46 @@
 </head>
 
 <body>
-    <header class="fixed top-0 w-full shadow-lg shadow-slate-400 mt-0 flex flex-col flex-wrap justify-between items-center sm:flex-row bg-maingreendark h-32">
-       <i class="text-darkgreen p-10 text-4xl fas fa-arrow-circle-left order-1 sm:order-1"></i> 
-       <img class="order-3 sm:order-2" src="./assets/images/subscreen-logo.svg" alt="Logo">
-       <div class="order-2 sm:order-3">
-            <i class="text-darkgreen p-6 text-4xl fas fa-heart"></i>
-            <i class="text-darkgreen p-6 text-4xl fas fa-home"></i>
-        </div>
+    <header
+        class="fixed top-0 w-full shadow-lg shadow-slate-400 mt-0 flex flex-nowrap justify-between items-center bg-maingreendark h-32">
+        <a href="index.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-home"></i></a>
+        <a href="index.html"><img class="cursor-pointer order-1" src="./assets/images/subscreen-logo.svg" alt="Logo"></a>
+            <a href="favourites.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-heart"></i></a>
     </header>
-    <main class="container mx-auto mt-44 mb-16">
-        <section class="text-center categories content-center grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-12 ">
-            <div id="burgers" class="h-40 sm:h-80 flex flex-col justify-end  cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/burgers-category.jpg')]">
-                <h2 class="text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Burgers</h2>
+    <main class="container px-10 sm:mx-auto mt-44 mb-12">
+        <section
+            class="text-center categories content-center grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-8 sm:gap-12 ">
+            <div id="burgers"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/burgers-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Burgers</h2>
             </div>
-            <div id="indian" class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/indian-category.jpg')]">
-                <h2 class="text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Indian</h2>
+            <div id="indian"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/indian-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Indian</h2>
             </div>
-            <div id="asian" class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/asian-category.jpg')]">
-                <h2 class="text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Asian</h2>
+            <div id="asian"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/asian-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Asian</h2>
             </div>
-            <div id="pizza" class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/pizza-category.jpg')]">
-                <h2 class="text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Pizza</h2>
+            <div id="pizza"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/pizza-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Pizza</h2>
             </div>
-            <div id="thai" class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/thai-category.jpg')]">
-                <h2 class="text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Thai</h2>
+            <div id="thai"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/thai-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Thai</h2>
             </div>
-            <div id="pasta" class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/pasta-category.jpg')]">
-                <h2 class="text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Pasta</h2>
+            <div id="pasta"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/pasta-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12">Pasta</h2>
             </div>
         </section>
     </main>
-    <footer class="bg-offgrey p-16">
-       
+    <footer class="bg-offgrey p-16 bg-opacity-50">
+        
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
