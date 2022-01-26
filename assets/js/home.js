@@ -3,6 +3,7 @@ var url = "/categories.html";
 // define a variable for coordinates
 var coordinates;
 // get the user location to set the value for the variable
+getUserLocation();
 function getUserLocation() {
   var options = {
     enableHighAccuracy: true,
@@ -26,14 +27,14 @@ function getUserLocation() {
 
 //add recipe/restaurant url params to the end of url, then add coords to end
 
-
-
 $("#recipe").on("click", function () {
   url = url + "?type=recipe";
-  console.log(url);
+  url = url + `&coordinates=${coordinates}`;
+  window.location = url;
 });
 
 $("#restaurant").on("click", function () {
   url = url + "?type=restaurant";
-  console.log(url);
+  url = url + `&coordinates=${coordinates}`;
+  window.location = url;
 });
