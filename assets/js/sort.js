@@ -12,25 +12,6 @@ var placesAPI =
   recipeData,
   restaurantImages = [];
 
-// sample objects
-var restaurant1 = {
-  name: "Something",
-  ratings: 4.5,
-  photo: "blob",
-  vicinity: "Some street, city",
-  status: true,
-  link: "https://www.google.com/maps/place/?q=place_id:ChIJp4JiUCNP0xQR1JaSjpW_Hms",
-};
-var recipe1 = {
-  title: "Let's cook something",
-  readyIn: "5 Mins",
-  servings: 5,
-  image: "url",
-  isVegan: false,
-  noOfIngredients: 10,
-  source: "link",
-};
-
 // get url parameters for fetech type and query
 var url = window.location.search;
 var urlParams = new URLSearchParams(url);
@@ -40,15 +21,21 @@ var coordinates = urlParams.get("coordinates");
 
 // statically defining parameters if empty
 if (!coordinates) {
-  coordinates = "-35.504128,138.7823104";
+  //   coordinates = "-35.504128,138.7823104";
+  //   coordinates = "-27.6667481,152.9271662";
+  coordinates = "-35.1935881,138.4983538";
 }
 if (!query) {
   query = "pizza";
 }
-
+// logging the parameters to the console
 console.log(
   urlParams.has("type") && urlParams.has("coordinates") && urlParams.has("q")
 );
+// on load check for parameters
+$(document).ready(function () {
+  checkParams();
+});
 // check if the required parameters are present or display error
 function checkParams() {
   if (type === "restaurant" && query && coordinates) {
@@ -61,8 +48,6 @@ function checkParams() {
     console.log("Invalid Type");
   }
 }
-checkParams();
-// fetchRestaurants();
 // if restaurant
 function fetchRestaurants() {
   console.log("Started fetching restaurants");
@@ -93,7 +78,7 @@ function fetchRestaurantImage(payload) {
       return ref.blob();
     })
     .then(function (image) {
-      getImages(image);
+      setImages(image);
     })
     .then(function () {
       initialiseRestaurantView(
@@ -108,14 +93,8 @@ function fetchRestaurantImage(payload) {
       count++;
     });
 }
-// temp
-function getImages(img) {
-  //   var urlCreator = window.URL || window.webkitURL;
-  //   console.log(urlCreator);
-  //   document.getElementById("myImage").src = urlCreator.createObjectURL(data);
-  //   var temp = urlCreator.createObjectURL(img);
-  //   console.log(temp);
-  //   $("#card-img").addClass(`bg-[url('${temp}')]`);
+// set images data for further processing
+function setImages(img) {
   var urlCreator = window.URL || window.webkitURL;
   var imgURL = urlCreator.createObjectURL(img);
   console.log(imgURL);
@@ -126,14 +105,7 @@ function getImages(img) {
 
 // initialising data and view for restaurants and recipes
 // set the data from fetch and push to restaurant array
-function initialiseRestaurantData(data) {
-  let name;
-  let ratings;
-  let photo;
-  let vicinity;
-  let isOpen;
-  let link;
-}
+
 // create restaurant card for each restaurant in array
 function initialiseRestaurantView(
   index,
@@ -148,7 +120,7 @@ function initialiseRestaurantView(
   let card = $("<div>")
     .attr("id", "restaurant-card")
     .addClass(
-      "inline-block w-96 p-4 mx-auto bg-maingreen rounded-2xl shadow-lg mb-8 shadow-slate-400 hover:cursor-grab"
+      "inline-block w-96 p-4 mx-6 bg-maingreen rounded-2xl shadow-lg mb-8 shadow-slate-400 hover:cursor-grab"
     )
     .attr("data-index", index);
   let cardInner = $("<div>").addClass(
@@ -158,9 +130,8 @@ function initialiseRestaurantView(
   let cardImg = $("<div>")
     .attr("id", "card-img")
     .addClass(
-      `relative rounded-lg shadow-xl bg-grey-700 h-48 mb-6 bg-cover bg-[url('${image}`
+      `relative rounded-lg shadow-xl bg-grey-700 h-48 mb-6 bg-cover bg-[url('${image}')]`
     );
-  //   setRestaurantImg(cardImg, image);
 
   let cardInfo = $("<div>")
     .attr("id", "card-info")
@@ -213,7 +184,6 @@ function initialiseRestaurantView(
   let linkText = $("<span>").addClass("pl-2").text("View Info");
   linkEl.append(linkIcon, linkText);
   infoLink.append(linkEl);
-
   // append
   cardInfo.append(infoName, infoVicinity, infoTags, infoLink);
   cardInner.append(cardImg, cardInfo);
@@ -221,15 +191,6 @@ function initialiseRestaurantView(
   container.append(card);
 }
 
-// initialiseRestaurantView(
-//   0,
-//   "/assets/images/sample-restaurant-bg.jpg",
-//   "KFC - Adelaide",
-//   "1 Main St, Springfield",
-//   3.5,
-//   true,
-//   "lkajsdsadfasfsdffjaksjdkfj"
-// );
 // set the data from fetch and push to reipes array
 function initialiseRecipeData() {}
 // create recipe card for each recipe in array
@@ -246,7 +207,7 @@ function initialiseRecipeView(
   let card = $("<div>")
     .attr("id", "recipe-card")
     .addClass(
-      "inline-block w-96 p-4 mx-auto bg-maingreen rounded-2xl shadow-lg mb-8 shadow-slate-400 hover:cursor-grab"
+      "inline-block w-96 p-4 mx-6 bg-maingreen rounded-2xl shadow-lg mb-8 shadow-slate-400 hover:cursor-grab"
     )
     .attr("data-index", index);
   let cardInner = $("<div>").addClass(
@@ -315,16 +276,6 @@ function initialiseRecipeView(
   container.append(card);
 }
 
-// initialiseRecipeView(
-//   0,
-//   "https://spoonacular.com/recipeImages/715538-556x370.jpg",
-//   "What to make for dinner tonight?? Bruschetta Style Pork & Pasta",
-//   true,
-//   12,
-//   45,
-//   "715538"
-// );
-
 // if recipe
 function fetchRecipes() {
   console.log("Started fetching recipes");
@@ -366,11 +317,6 @@ function fetchRecipes() {
 // helper functions
 // manage ratings color based on the value
 // update ratings box background color based on the value
-// function setRestaurantImg(el, blob) {
-//   let urlCreator = window.URL || window.webkitURL;
-//   let img = urlCreator.createObjectURL(blob);
-//   el.addClass(`bg-[url('${img}')]`);
-// }
 function setRatingsBg(el, n) {
   if (n > 0 && n <= 1) {
     el.addClass("bg-red-700");
@@ -384,16 +330,6 @@ function setRatingsBg(el, n) {
     el.addClass("bg-green-600");
   } else {
     el.addClass("bg-stone-600");
-  }
-}
-//
-function setOpenOrClosedColor(bool) {
-  let isOpen = $("<i>").addClass("fas fa-door-open");
-  let isClosed = $("<i>").addClass("fas fa-door-closed");
-  if (b) {
-    return isOpen;
-  } else {
-    return isClosed;
   }
 }
 // manage span background color based on boolean value
