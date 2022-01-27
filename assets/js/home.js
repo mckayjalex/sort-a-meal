@@ -1,7 +1,11 @@
-// devine a variable for the url
+// devine variables
 var url = "/categories.html";
-// define a variable for coordinates
 var coordinates;
+var modal = document.getElementById("modal");
+var redbox = document.getElementById("redbox");
+
+modal.style.display = "none";
+
 // get the user location to set the value for the variable
 getUserLocation();
 function getUserLocation() {
@@ -36,7 +40,7 @@ $("#restaurant").on("click", function () {
     url = url + "?type=restaurant";
     url = url + `&coordinates=${coordinates}`;
     window.location = url;
-  } else alert("Location is not defined");
+  } else modal.style.display = "block";
 });
 
 //Pull up a modal over the Sort a restaurant, until coords are set.
@@ -45,9 +49,8 @@ check();
 
 function check() {
   if (!coordinates) {
-    setInterval(checkCoordinates, 1100);
+    setInterval(checkCoordinates, 1000);
   } else {
-    var redbox = document.getElementById("redbox");
     redbox.style.display = "none";
   }
 }
@@ -55,6 +58,10 @@ function check() {
 //Call a function that checks every second for coordinates. Once it has coordiantes, it clears the model.
 
 function checkCoordinates() {
-  console.log("1");
   check();
 }
+
+$("#modal-click").on("click", function () {
+  getUserLocation();
+  modal.style.display = "none";
+});
