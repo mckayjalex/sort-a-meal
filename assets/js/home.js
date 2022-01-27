@@ -27,11 +27,8 @@ function getUserLocation() {
 //add recipe/restaurant url params to the end of url, then add coords to end
 
 $("#recipe").on("click", function () {
-  if (coordinates) {
-    url = url + "?type=recipe";
-    url = url + `&coordinates=${coordinates}`;
-    window.location = url;
-  } else alert("Location is not defined");
+  url = url + "?type=recipe";
+  window.location = url;
 });
 
 $("#restaurant").on("click", function () {
@@ -41,3 +38,23 @@ $("#restaurant").on("click", function () {
     window.location = url;
   } else alert("Location is not defined");
 });
+
+//Pull up a modal over the Sort a restaurant, until coords are set.
+
+check();
+
+function check() {
+  if (!coordinates) {
+    setInterval(checkCoordinates, 1100);
+  } else {
+    var redbox = document.getElementById("redbox");
+    redbox.style.display = "none";
+  }
+}
+
+//Call a function that checks every second for coordinates. Once it has coordiantes, it clears the model.
+
+function checkCoordinates() {
+  console.log("1");
+  check();
+}
