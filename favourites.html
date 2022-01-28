@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/96894b11db.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/favourites.css">
     <script>
@@ -48,34 +49,36 @@
                 class="block w-full focus:ring-maingreendark focus:border-maingreendark border-gray-300 rounded-md">
                 <option selected>Restaurants</option>
 
-                <option>Recipes</option>
+                <option >Recipes</option>
             </select>
         </div>
         <div class="hidden sm:block">
-            <nav class="relative z-0 rounded-lg shadow flex divide-x divide-gray-200" aria-label="Tabs">
+            <nav id="options" class="relative z-0 rounded-lg shadow flex divide-x divide-gray-200" aria-label="Tabs">
                 <!-- Current: "text-gray-900", Default: "text-gray-500 hover:text-gray-700" -->
-                <a href="#"
+                <!-- Restaurants Button -->
+                <a id="restaurants" href="#" data-type="restaurants"
                     class="text-gray-900 rounded-l-lg group relative min-w-0 flex-1  bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50 focus:z-10"
                     aria-current="page">
                     <span>Restaurants</span>
-                    <span aria-hidden="true" class="bg-maingreendark absolute inset-x-0 bottom-0 h-0.5"></span>
+                    <span id="restaurant-border" aria-hidden="true" class="bg-maingreendark absolute inset-x-0 bottom-0 h-0.5"></span>
                 </a>
-
-                <a href="#"
+                <!-- Recipes Button -->
+                <a id="recipes" href="#" data-type="recipes"
                     class="text-gray-500 hover:text-gray-700 group relative min-w-0 flex-1 bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50 focus:z-10">
                     <span>Recipes</span>
-                    <span aria-hidden="true" class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
+                    <span id="recipe-border" aria-hidden="true" class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
                 </a>
             </nav>
         </div>
     </div>
+    <!-- Favourites Header -->
     <section
         class="shadow-lg shadow-slate-400 flex justify-center fixed top-32 mx-auto inset-x-0 tab bg-maingreendark h-12 text-2xl text-white w-full font-boogaloo">
         <h1>Favourites</h1>
     </section>
-
+    <!-- Container for favourites data to be added dynamically -->
     <main class="container px-10 sm:mx-auto mt-10 mb-36">
-        <section class="categories text-center content-center grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 ">
+        <section id="fav-content" class="categories text-center content-center grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 ">
             <div
                 class="h-52 sm:h-72 md:h-72 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/burgers-category.jpg')]">
             </div>
