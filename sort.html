@@ -37,16 +37,21 @@
 
 <body class="bg-white">
     <!-- header -->
-    <header class="flex w-full items-center justify-center p-4 bg-maingreen">
+    <!-- <header class="flex w-full items-center justify-center p-4 bg-maingreen">
         <img src="./assets/images/logo.svg" alt="" width="240px">
-
+    </header> -->
+    <header
+        class="fixed top-0 w-full shadow-lg shadow-slate-400 mt-0 flex flex-nowrap justify-between items-center bg-maingreendark h-32 z-40">
+        <a href="index.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-home"></i></a>
+        <a href="index.html"><img class="cursor-pointer order-1" src="./assets/images/logo.svg" alt="Logo"></a>
+        <a href="favourites.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-heart"></i></a>
     </header>
 
     <!-- container -->
     <main>
         <!-- <section id="cards" class="container mx-auto p-4 justify-center text-center"> -->
         <section id="cards"
-            class="min-h-screen bg-gray-50 py-6 flex flex-col justify-center relative overflow-hidden px-6 sm:py-12">
+            class="min-h-screen bg-gray-50 py-6 flex flex-col justify-center relative overflow-hidden mt-40 px-6 sm:py-12">
             <!-- cards here -->
         </section>
         <section id="selection"

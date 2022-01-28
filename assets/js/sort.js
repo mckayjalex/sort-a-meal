@@ -15,7 +15,8 @@ var placesAPI =
   blobImages = [],
   restaurantImages = [],
   savedFavourites = JSON.parse(localStorage.getItem("favourites")),
-  cardItems;
+  cardItems,
+  currentCard = 0;
 
 // sample favourites
 var sampleFavouritesObj = {
@@ -318,7 +319,7 @@ function initialiseRestaurantsView(
   let container = $("#cards");
   let card = $("<div>")
     .addClass(
-      "card inline-block w-96 p-4 mx-6 bg-maingreen absolute rounded-2xl shadow-lg mb-8 shadow-slate-400 hover:cursor-grab"
+      "card relative p-6 shadow-xl bg-maingreen ring-1 ring-gray-900/5 max-w-md md:min-w-[28rem] mx-auto rounded-2xl hover:cursor-grab"
     )
     .attr("data-index", index);
   let cardInner = $("<div>").addClass(
@@ -414,7 +415,7 @@ function initialiseRecipesView(
   let container = $("#cards");
   let card = $("<div>")
     .addClass(
-      "card inline-block w-96 p-4 mx-6 bg-maingreen absolute rounded-2xl shadow-lg mb-8 shadow-slate-400 hover:cursor-grab"
+      "card relative p-6 shadow-xl bg-maingreen ring-1 ring-gray-900/5 max-w-md md:min-w-[28rem] mx-auto rounded-2xl hover:cursor-grab"
     )
     .attr("data-index", index);
   let cardInner = $("<div>").addClass(
@@ -537,12 +538,6 @@ function addRecipeToFavourites(index) {
   syncLocalStorage(favourites);
 }
 
-// manage input
-$("#selection").on("click", "button", function () {
-  let input = $(this).data("add");
-  console.log(input);
-});
-
 // check is all the data is loaded to the document
 function isViewInitialised() {
   let cardsContainer = $("#cards");
@@ -553,30 +548,38 @@ function isViewInitialised() {
     cardItems = $(".card");
     if (type === "restaurant" && cardItems.length === restaurantImages.length) {
       console.log("equal length");
+      stackCards();
       $(cardsContainer).removeClass("hidden");
       clearInterval(checkData);
     } else if (type === "recipe" && cardItems.length === fetchedData.length) {
       console.log("equal length");
+      stackCards();
       $(cardsContainer).removeClass("hidden");
       clearInterval(checkData);
     }
-  }, 1000);
+  }, 3000);
 }
 // stack the cards
-function stackCards() {}
-var newCards;
-function initCards(card, index) {
-  var newCards = document.querySelectorAll(".card:not(.removed)");
-  console.log(newCards);
-  newCards.forEach(function (card, index) {
-    card.style.zIndex = cardItems.length - index;
-    card.style.transform =
-      "scale(" + (20 - index) / 20 + ") translateY(-" + 30 * index + "px)";
-    card.style.opacity = (10 - index) / 10;
-  });
-
-  // tinderContainer.classList.add("loaded");
+function stackCards() {
+  for (let i = 0; i < cardItems.length; i++) {
+    $(cardItems[i]).addClass("hidden");
+    if (i === currentCard) {
+      $(cardItems[i]).removeClass("hidden");
+    }
+  }
 }
+// manage input
+$("#selection").on("click", "button", function () {
+  let input = $(this).data("add");
+  console.log(input);
+  if (type === "restaurant" && input === "yay") {
+    addRestaurantToFavourites(currentCard);
+  } else if (type === "recipe" && input === "yay") {
+    addRecipeToFavourites(currentCard);
+  }
+  currentCard++;
+  stackCards();
+});
 
 // helper functions
 // set images data for further processing
