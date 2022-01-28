@@ -44,80 +44,17 @@
 
     <!-- container -->
     <main>
-        <section id="cards" class="container mx-auto p-4 justify-center text-center">
-            <!-- <img alt="" id="myImage"> -->
-            <!-- <div id="demoDiv" class="p-8 w-96 h-96 bg-black bg-cover mx-auto"></div> -->
-
-            <!-- <div id="restaurant-card"
-                class="inline-block w-96 p-4 mx-auto bg-maingreen rounded-2xl shadow-lg shadow-slate-400 hover:cursor-grab"
-                data-index="1">
-                <div class="relative p-4 border-8 border-darkgreen rounded-2xl bg-white">
-                    <div id="card-img" class="relative rounded-lg shadow-xl bg-grey-700 h-48 mb-6 bg-cover">
-                    </div>
-                    <div id="card-info" class="relative text-center">
-                        <h2 id="info-name" class="text-3xl text-darkgreen font-boogaloo uppercase mb-2">KFC -
-                            Springfield</h2>
-                        <p id="info-vicinity" class="pt-2 mb-2"><i class="fas fa-map-marker-alt"></i><span
-                                id="vicinity-data" class="pl-2">1 Main St,
-                                Springfield</span></p>
-                        <div class="flex justify-around py-4">
-                            <span id="info-ratings" class="py-2 text-white bg-green-600 px-4 rounded"><i
-                                    class="fas fa-star"></i><span id="ratings-data" class="pl-2">4.5</span>
-                            </span>
-                            <span id="info-status" class="py-2 uppercase text-white bg-lime-600 px-4 rounded">
-                                <i class="fas fa-door-open"></i><span id="status-data" class="pl-2">Open</span>
-                            </span>
-                        </div>
-                        <div class="mt-4 mb-3 text-darkgreen">
-                            <a id="info-details" class="border-4 border-darkgreen rounded-lg py-2 px-4" href=""><i
-                                    class="fas fa-info-circle"></i><span class="pl-2">View Info</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- tinder like cards -->
-            <!-- <div class="tinder">
-                <div class="tinder--status">
-                    <i class="fa fa-remove"></i>
-                    <i class="fa fa-heart"></i>
-                </div>
-
-                <div class="tinder--cards">
-                    <div class="tinder--card">
-                        <img src="https://placeimg.com/600/300/people">
-                        <h3>Demo card 1</h3>
-                        <p>This is a demo for Tinder like swipe cards</p>
-                    </div>
-                    <div class="tinder--card">
-                        <img src="https://placeimg.com/600/300/animals">
-                        <h3>Demo card 2</h3>
-                        <p>This is a demo for Tinder like swipe cards</p>
-                    </div>
-                    <div class="tinder--card">
-                        <img src="https://placeimg.com/600/300/nature">
-                        <h3>Demo card 3</h3>
-                        <p>This is a demo for Tinder like swipe cards</p>
-                    </div>
-                    <div class="tinder--card">
-                        <img src="https://placeimg.com/600/300/tech">
-                        <h3>Demo card 4</h3>
-                        <p>This is a demo for Tinder like swipe cards</p>
-                    </div>
-                    <div class="tinder--card">
-                        <img src="https://placeimg.com/600/300/arch">
-                        <h3>Demo card 5</h3>
-                        <p>This is a demo for Tinder like swipe cards</p>
-                    </div>
-                </div>
-
-                <div class="tinder--buttons">
-                    <button id="nope"><i class="fa fa-remove"></i></button>
-                    <button id="love"><i class="fa fa-heart"></i></button>
-                </div>
-            </div> -->
-
+        <!-- <section id="cards" class="container mx-auto p-4 justify-center text-center"> -->
+        <section id="cards"
+            class="min-h-screen bg-gray-50 py-6 flex flex-col justify-center relative overflow-hidden px-6 sm:py-12">
+            <!-- cards here -->
+        </section>
+        <section id="selection"
+            class="flex w-screen fixed justify-center bottom-0 left-0 p-2 pb-4 gap-6 bg-gray-300/50">
+            <button id="nay" class="px-6 py-4 text-4xl text-gray-100 bg-red-400 rounded-xl m-2" data-add="nay"><i
+                    class="fas fa-thumbs-down"></i></button>
+            <button id="yay" class="px-6 py-4 text-4xl text-gray-100 bg-green-400 rounded-xl m-2" data-add="yay"><i
+                    class="fas fa-thumbs-up"></i></button>
         </section>
     </main>
 
