@@ -3,8 +3,10 @@ var url = "/categories.html";
 var coordinates;
 var modal = document.getElementById("modal");
 var redbox = document.getElementById("redbox");
+var restarant = document.getElementById("restaurant");
 
 modal.style.display = "none";
+restarant.style.opacity = "0.1";
 
 // get the user location to set the value for the variable
 getUserLocation();
@@ -27,8 +29,7 @@ function getUserLocation() {
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
-//once coodinates variable has been set, allow onclick function for recipe and restarant
-//add recipe/restaurant url params to the end of url, then add coords to end
+///add recipe/restaurant url params to the end of url, then add coords to end
 
 $("#recipe").on("click", function () {
   url = url + "?type=recipe";
@@ -40,10 +41,17 @@ $("#restaurant").on("click", function () {
     url = url + "?type=restaurant";
     url = url + `&coordinates=${coordinates}`;
     window.location = url;
-  } else modal.style.display = "block";
+  } else {
+    modal.style.display = "block";
+   }
 });
 
-//Pull up a modal over the Sort a restaurant, until coords are set.
+$("#modal-click").on("click", function () {
+  getUserLocation();
+  modal.style.display = "none";
+});
+
+//function checks coordinates. Makes restaurant div visible.
 
 check();
 
@@ -51,17 +59,10 @@ function check() {
   if (!coordinates) {
     setInterval(checkCoordinates, 1000);
   } else {
-    redbox.style.display = "none";
+    restarant.style.opacity = "1";
   }
 }
-
-//Call a function that checks every second for coordinates. Once it has coordiantes, it clears the model.
 
 function checkCoordinates() {
   check();
 }
-
-$("#modal-click").on("click", function () {
-  getUserLocation();
-  modal.style.display = "none";
-});
