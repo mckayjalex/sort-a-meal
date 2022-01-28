@@ -5,7 +5,8 @@ var modal = document.getElementById("modal");
 var redbox = document.getElementById("redbox");
 var restarant = document.getElementById("restaurant");
 
-modal.style.display = "none";
+// modal.style.display = "none";
+modal.classList.add("hidden");
 restarant.style.opacity = "0.1";
 
 // get the user location to set the value for the variable
@@ -42,13 +43,15 @@ $("#restaurant").on("click", function () {
     url = url + `&coordinates=${coordinates}`;
     window.location = url;
   } else {
-    modal.style.display = "block";
-   }
+    // modal.style.display = "block";
+    modal.classList.remove("hidden");
+  }
 });
 
 $("#modal-click").on("click", function () {
   getUserLocation();
-  modal.style.display = "none";
+  // modal.style.display = "none";
+  modal.classList.add("hidden");
 });
 
 //function checks coordinates. Makes restaurant div visible.
