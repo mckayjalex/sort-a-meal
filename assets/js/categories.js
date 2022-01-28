@@ -24,7 +24,7 @@ function getQuery(event) {
 }
 
 function loadSortPage() {
-    if(coordinates) {
+    if(coordinates === true) {
         window.location = `${sortUrl}${coordinates}&${type}&${query}`;
     } else {
         window.location = `${sortUrl}${type}&${query}`;
