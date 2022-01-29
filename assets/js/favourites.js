@@ -209,7 +209,6 @@ recipeBtn.addEventListener('click', function () {
 
 function getData() {
     favourites = JSON.parse(localStorage.getItem('favourites'));
-    // console.log(favourites);
 }
 
 // Displays all favourite restaurants
@@ -358,29 +357,24 @@ function displayRecipes(recipes) {
     }
 }
 
-// function removeRestaurantFavourites(int) {
-//     favourites.restaurants.splice(int, 1);
-//     localStorage.setItem('favourites', JSON.stringify(favourites));
-//     console.log(favourites.restaurants);
-//     int--;
-// }
-// function removeRecipeFavourites(int) {
-//     favourites.recipes.splice(int, 1);
-//     localStorage.setItem('favourites', JSON.stringify(favourites));
-//     console.log(favourites.recipes);
-// }
-
+function removeRestaurantFavourites(int) {
+    favourites.restaurants.splice(int, 1);
+    localStorage.setItem('favourites', JSON.stringify(favourites));
+}
+function removeRecipeFavourites(int) {
+    favourites.recipes.splice(int, 1);
+    localStorage.setItem('favourites', JSON.stringify(favourites));
+}
 // Add link button animation
 favContentRecipe.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
-    // removeRecipeFavourites(event.target.dataset.index);
+    removeRecipeFavourites(event.target.dataset.index);
 })
 favContentRestaurant.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
-    // removeRestaurantFavourites(event.target.dataset.index);
-
+    removeRestaurantFavourites(event.target.dataset.index);
 })
 
 init();
