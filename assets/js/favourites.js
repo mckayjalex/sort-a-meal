@@ -5,7 +5,7 @@ var sampleFavouritesObj = {
             image: {},
             name: "Zarelli's Cafe Ristorante",
             vicinity: "Shop 9/1 Prow Dr, Seaford Meadows",
-            ratings: 4.3,
+            ratings: 2.3,
             status: true,
             link: "ChIJMx6SzggksWoRTcjNHlzavlY",
         },
@@ -161,8 +161,8 @@ localStorage.setItem('favourites', JSON.stringify(sampleFavouritesObj));
 // Global variables
 let favourites;
 
-let restaurantBtn = document.querySelector('#restaurants');
-let recipeBtn = document.querySelector('#recipes');
+let restaurantTab = document.querySelector('#restaurants');
+let recipeTab = document.querySelector('#recipes');
 let restLine = document.querySelector('#restaurant-border');
 let recipeLine = document.querySelector('#recipe-border');
 let favContentRecipe = document.querySelector('#fav-content-recipe');
@@ -195,13 +195,13 @@ function recipeButtonGraphics() {
     restaurantBtn.classList.add('text-gray-500');
 }
 // Restaurant tab button
-restaurantBtn.addEventListener('click', function () {
+restaurantTab.addEventListener('click', function () {
     favContentRecipe.classList.add('hidden');
     favContentRestaurant.classList.remove('hidden');
     restaurantButtonGraphics();
 })
 // Recipe tab button
-recipeBtn.addEventListener('click', function () {
+recipeTab.addEventListener('click', function () {
     favContentRestaurant.classList.add('hidden');
     favContentRecipe.classList.remove('hidden');
     recipeButtonGraphics();
@@ -218,77 +218,135 @@ function displayRestaurants(restaurants) {
     for (let i = 0; i < restaurants.length; i++) {
         // Add container
         let container = document.createElement('div');
-        container.classList.add('h-52', 'sm:h-72', 'md:h-72', 'flex', 'flex-row', 'justify-center', 'rounded-2xl', 'shadow-xl', 'shadow-slate-500')
+        container.classList.add('font-boogaloo', 'h-52', 'sm:h-72', 'md:h-72', 'flex', 'flex-row', 'justify-center', 'rounded-2xl', 'shadow-xl', 'shadow-slate-500')
         favContentRestaurant.append(container);
         // Add image
         let image = document.createElement('img');
         image.setAttribute('src', "./assets/images/restaurant.jpg");
-        image.classList.add('w-52', 'h-60', 'm-6', 'rounded-md');
+        image.classList.add('w-40', 'sm:w-52', 'm-3', 'sm:m-6', 'rounded-md');
         container.append(image);
         // Add text container
         let textContainer = document.createElement('div');
-        textContainer.classList.add('w-4/6', 'm-6', 'bg-offgrey');
+        textContainer.classList.add('w-4/6', 'm-6', 'flex', 'flex-col', 'items-start', 'justify-between');
         container.append(textContainer);
         // Add name
         let name = document.createElement('h2');
-        name.textContent = restaurants[0].name;
+        name.classList.add('text-left', 'text-md', 'sm:text-3xl', 'md:text-3xl', 'lg:text-xl', 'xl:text-3xl');
+        name.textContent = restaurants[i].name;
         textContainer.append(name);
         // Add address
+        let addressContainer = document.createElement('div');
+        textContainer.append(addressContainer);
+        addressContainer.classList.add('flex', 'justify-start', 'items-center');
+        let mapIcon = document.createElement('i');
+        mapIcon.classList.add('fas', 'fa-map-marker-alt', 'pr-2');
+        addressContainer.append(mapIcon);
         let address = document.createElement('p');
+        address.classList.add('text-sm', 'sm:text-lg', 'md:text-xl', 'lg:text-sm', 'xl:text-xl');
         address.textContent = restaurants[i].vicinity;
-        textContainer.append(address);
+        addressContainer.append(address);
         // Add rating
+        let ratingContainer = document.createElement('div');
+        textContainer.append(ratingContainer);
+        ratingContainer.classList.add('flex', 'justify-start', 'items-center');
         let rating = document.createElement('p');
+        rating.classList.add('text-sm', 'sm:text-lg', 'md:text-xl', 'px-2', 'lg:text-lg', 'xl:text-2xl');
+        if (restaurants[i].ratings < 3) {
+            rating.classList.add('rounded-lg', 'bg-red-500');
+        } else if (restaurants[i].ratings > 3 && restaurants[i].ratings < 4) {
+            rating.classList.add('rounded-lg', 'bg-yellow-400');
+        } else {
+            rating.classList.add('rounded-lg', 'bg-green-500');
+        }
         rating.textContent = restaurants[i].ratings;
-        textContainer.append(rating);
-        // Add more info link
+        ratingContainer.append(rating);
+        let ratingIcon = document.createElement('i');
+        ratingIcon.classList.add('xl:text-xl', 'fas', 'fa-star', 'text-yellow-300', 'pl-2');
+        ratingContainer.append(ratingIcon);
+
+        // Add more info link and like 
+        let linkLikeContainer = document.createElement('div');
+        textContainer.append(linkLikeContainer);
+        linkLikeContainer.classList.add('flex', 'flex-row', 'w-full', 'items-center', 'justify-between');
         let link = document.createElement('a');
+        link.classList.add('text-sm', 'sm:text-xl', 'md:text-2xl', 'lg:text-lg', 'xl:text-xl', 'bg-slate-100', 'px-4', 'rounded-md', 'shadow-xl', 'shadow-slate-400', 'hover:bg-slate-300', 'cursor-pointer');
         link.textContent = 'More Info';
-        link.setAttribute('src', restaurants[i].link);
-        textContainer.append(link);
-        favContentRestaurant.append(container);
+        link.setAttribute('href', restaurants[i].link);
+        linkLikeContainer.append(link);
+        let like = document.createElement('i');
+        like.classList.add('text-2xl', 'sm:text-3xl', 'md:text-5xl', 'lg:text-3xl', 'xl:text-5xl', 'fa', 'fa-heart', 'cursor-pointer', 'text-maingreen');
+        linkLikeContainer.append(like);
     }
 }
 // Displays all favourite recipes
 function displayRecipes(recipes) {
     // Add container
     for (let i = 0; i < recipes.length; i++) {
+        // Add container
         let container = document.createElement('div');
-        container.classList.add('h-52', 'sm:h-72', 'md:h-72', 'flex', 'flex-row', 'justify-center', 'rounded-2xl', 'shadow-xl', 'shadow-slate-500')
+        container.classList.add('font-boogaloo', 'h-52', 'sm:h-72', 'md:h-72', 'flex', 'flex-row', 'justify-center', 'rounded-2xl', 'shadow-xl', 'shadow-slate-500')
         favContentRecipe.append(container);
         // Add image
         let image = document.createElement('img');
-        image.setAttribute('src', "./assets/images/recipe.jpg");
-        image.classList.add('w-52', 'h-60', 'm-6', 'rounded-md');
+        image.setAttribute('src', "./assets/images/restaurant.jpg");
+        image.classList.add('w-40', 'sm:w-52', 'm-3', 'sm:m-6', 'rounded-md');
         container.append(image);
         // Add text container
         let textContainer = document.createElement('div');
-        textContainer.classList.add('flex', 'flex-col', 'align-start', 'w-4/6', 'm-6', 'bg-offgrey');
+        textContainer.classList.add('w-4/6', 'm-6', 'flex', 'flex-col', 'items-start', 'justify-between');
         container.append(textContainer);
         // Add title
         let title = document.createElement('h2');
+        title.classList.add('text-left', 'text-md', 'sm:text-3xl', 'md:text-3xl', 'lg:text-xl', 'xl:text-3xl');
         title.textContent = recipes[i].title;
         textContainer.append(title);
-        // Add ingredients
-        let ingredients = document.createElement('p');
-        ingredients.textContent = recipes[i].ingredients;
-        textContainer.append(ingredients);
         // Add servings
-        let servings = document.createElement('p');
-        servings.textContent = recipes[i].servings;
-        textContainer.append(servings);
-        // Add vegan details 
-        let veganStatus = document.createElement('p');
-        if (recipes[i].vegan) {
-            veganStatus.textContent = 'Vegan';
-        }
-        textContainer.append(veganStatus);
-        // Add more info link
+        let servingsContainer = document.createElement('div');
+        textContainer.append(servingsContainer);
+        servingsContainer.classList.add('flex', 'justify-start', 'items-center', 'bg-offgrey', 'px-2', 'rounded');
+        let servings = document.createElement('h2');
+        servings.classList.add('text-md', 'sm:text-lg', 'md:text-xl', 'lg:text-xl', 'xl:text-xl');
+        servings.textContent = 'Servings: ' + recipes[i].servings;
+        servingsContainer.append(servings);
+        let servingsIcon = document.createElement('i');
+        servingsIcon.classList.add('fas', 'fa-utensils', 'pl-2');
+        servingsContainer.append(servingsIcon);
+        // Add ingredients
+        let ingredientsContainer = document.createElement('div');
+        textContainer.append(ingredientsContainer);
+        ingredientsContainer.classList.add('flex', 'justify-start', 'items-center');
+        let ingredients = document.createElement('p');
+        ingredients.classList.add('text-sm', 'sm:text-lg', 'md:text-xl', 'lg:text-sm', 'xl:text-xl');
+        ingredients.textContent = 'Ingredients: ' + recipes[i].ingredients;
+        ingredientsContainer.append(ingredients);
+        let ingredientsIcon = document.createElement('i');
+        ingredientsIcon.classList.add('fas', 'fa-balance-scale-left', 'pl-2');
+        ingredientsContainer.append(ingredientsIcon);
+        // Add more info link and like 
+        let linkLikeContainer = document.createElement('div');
+        textContainer.append(linkLikeContainer);
+        linkLikeContainer.classList.add('flex', 'flex-row', 'w-full', 'items-center', 'justify-between');
         let link = document.createElement('a');
+        link.classList.add('text-sm', 'sm:text-xl', 'md:text-2xl', 'lg:text-lg', 'xl:text-xl', 'bg-slate-100', 'px-4', 'rounded-md', 'shadow-xl', 'shadow-slate-400', 'hover:bg-slate-300', 'cursor-pointer');
         link.textContent = 'More Info';
-        link.setAttribute('src', recipes[i].link);
-        textContainer.append(link);
+        link.setAttribute('href', recipes[i].link);
+        linkLikeContainer.append(link);
+        let like = document.createElement('i');
+        like.classList.add('text-2xl', 'sm:text-3xl', 'md:text-5xl', 'lg:text-3xl', 'xl:text-5xl', 'fa', 'fa-heart', 'cursor-pointer', 'text-maingreen');
+        linkLikeContainer.append(like);
     }
-
 }
+// Add link button animation
+favContentRecipe.addEventListener('click', function(event) {
+    event.target.classList.remove('fa')
+    event.target.classList.add('far');
+})
+favContentRestaurant.addEventListener('click', function(event) {
+    event.target.classList.remove('fa')
+    event.target.classList.add('far');
+})
+
 init();
+
+
+
