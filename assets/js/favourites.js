@@ -222,7 +222,7 @@ function displayRestaurants(restaurants) {
         favContentRestaurant.append(container);
         // Add image
         let image = document.createElement('img');
-        image.setAttribute('src', "./assets/images/restaurant.jpg");
+        image.setAttribute('src', "./assets/images/restaurantFav.jpg");
         image.classList.add('w-40', 'sm:w-52', 'm-3', 'sm:m-6', 'rounded-md');
         container.append(image);
         // Add text container
@@ -290,7 +290,7 @@ function displayRecipes(recipes) {
         favContentRecipe.append(container);
         // Add image
         let image = document.createElement('img');
-        image.setAttribute('src', "./assets/images/restaurant.jpg");
+        image.setAttribute('src', "./assets/images/recipeFav.jpg");
         image.classList.add('w-40', 'sm:w-52', 'm-3', 'sm:m-6', 'rounded-md');
         container.append(image);
         // Add text container
