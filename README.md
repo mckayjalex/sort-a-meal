@@ -37,7 +37,6 @@ THEN I am presented with previous cards I have created
 
 ```
 
-
 ## PROJECT REQUIRMENTS 
 
 ### Use a CSS framework other than Bootstrap.
