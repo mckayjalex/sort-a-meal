@@ -4,10 +4,10 @@
 
 ## Team members
 
-* [Hari](https://github.com/hari-ls)
-* [Alex](https://github.com/mckayjalex)
-* [Clayton](https://github.com/ClaytonMcIntosh/)
-* [Jaiden](https://github.com/JaidenSP) (concept and planning)
+- [Hari](https://github.com/hari-ls)
+- [Alex](https://github.com/mckayjalex)
+- [Clayton](https://github.com/ClaytonMcIntosh/)
+- [Jaiden](https://github.com/JaidenSP) (concept and planning)
 
 ## Description
 
@@ -18,12 +18,15 @@ Sort a meal's concept came together by merging a few ideas. First, we needed to 
 > Sort a Meal helps solve the problem of being indecisive at meal time. The app gathers local restaurants or recipes and helps you sort through meal options so you can find a meal you want.
 
 ### User story
+
 ```
-AS AN indecisive eater 
+AS AN indecisive eater
 I WANT an app that cycles through restaurants and recipes
 SO THAT I can find something appetizing to eat
 ```
+
 ### Acceptance criteria
+
 ```
 GIVEN I am indecisive at meal times
 WHEN I use the app
@@ -42,42 +45,43 @@ THEN I am presented with previous cards I have created
 
 ## Development
 
+The project took just under two weeks from finding out our team to final presentation.
 
+After working on the concept we started on researching APIS, CSS frameworks, and similar ideas. We started a [FigJam](https://www.figma.com/) project to keep out ideas together and used a kanban project system on [GitHub](https://github.com/). We also developed a wireframe, fleshing it out into a simple prototype in [Figma](https://www.figma.com/).
 
+![Photo of Sort A Meal](./assets/images/ideas.jpg)
 
 ## Technology used
-
 
 ## Project requirements
 
 ### Use a CSS framework other than Bootstrap.
 
-We used [Tailwind CSS](https://tailwindcss.com/) for our CSS framework. 
-
+We used [Tailwind CSS](https://tailwindcss.com/) for our CSS framework.
 
 ### Be deployed to GitHub Pages.
 
 Link to final project: (insert link)
 
-
 ### Be interactive (i.e., accept and respond to user input).
 
 The application is interactive in the following ways:
-* navagating between screens
-* collecting and displaying real time data, such as addresses, restaurant names and blob images
-* allowing users to sort through choices
-* saving choices locally to be accessed later on
+
+- navagating between screens
+- collecting and displaying real time data, such as addresses, restaurant names and blob images
+- allowing users to sort through choices
+- saving choices locally to be accessed later on
 
 ### Use at least two server-side APIs.
 
 Although we trialed many APIS, in the end we used three APIs.
 
 1. [Spoonacular](https://spoonacular.com/food-api)
-Spoonacular allowed us free access to thousands of free recipes.
+   Spoonacular allowed us free access to thousands of free recipes.
 2. [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
-Google Places gave us access to restaurant data
+   Google Places gave us access to restaurant data
 3. [Google Photos APIs](https://developers.google.com/photos)
-Google photos gave us access to photos associated with the restarant data
+   Google photos gave us access to photos associated with the restarant data
 
 We also used [Postman](https://www.postman.com/) to help us access API data.
 
@@ -104,6 +108,3 @@ The repository is clean and meets quality coding standards.
 ### Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 This is a quality Readme file with a uqique name, description, technologies used, a screenshot and a link the deployed application.
-
-
-
