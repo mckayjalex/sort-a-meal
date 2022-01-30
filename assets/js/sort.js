@@ -23,16 +23,6 @@ var type = urlParams.get("type");
 var query = urlParams.get("q");
 var coordinates = urlParams.get("coordinates");
 
-// statically defining parameters if empty
-if (!coordinates) {
-  //   coordinates = "-35.504128,138.7823104";
-  //   coordinates = "-27.6667481,152.9271662";
-  coordinates = "-35.1935881,138.4983538";
-}
-if (!query) {
-  query = "pizza";
-}
-
 // check if the required parameters are present or display error
 function checkParams() {
   if (type === "restaurant" && query && coordinates) {
