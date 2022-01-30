@@ -41,7 +41,7 @@ THEN I am presented with previous cards I have created
 
 ### Use a CSS framework other than Bootstrap.
 
-We used [Tailwind CSS] (https://tailwindcss.com/)
+We used [Tailwind CSS](https://tailwindcss.com/)
 
 
 ### Be deployed to GitHub Pages.
