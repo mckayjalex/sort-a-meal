@@ -27,9 +27,9 @@ THEN I am presented with an options to sort between a recipe or a restaurant
 WHEN I make my choice
 THEN I am presented with different categories of food
 WHEN I make my choice
-THEN I am presented a deck of cards with recipies or local restaurants to sort
+THEN I am presented a deck of cards with recipes or local restaurants to sort
 WHEN I read the cards
-THNE I am presented with useful infomation
+THNE I am presented with useful information
 WHEN I click thumbs up
 THEN the card is saved to my favourites
 WHEN I access my favourites cards
