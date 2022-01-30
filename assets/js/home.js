@@ -1,5 +1,5 @@
 // devine variables
-var url = "/categories.html";
+var url = "./categories.html";
 var coordinates;
 var modal = document.getElementById("modal");
 var redbox = document.getElementById("redbox");

@@ -1,6 +1,6 @@
 
 // Base URL
-let sortUrl = '/sort.html?';
+let sortUrl = './sort.html?';
 
 // Global variables
 let query;
