@@ -10,8 +10,6 @@ var placesAPI =
   favourites = { restaurants: [], recipes: [] },
   flag,
   count = 0,
-  restaurantData,
-  recipeData,
   blobImages = [],
   restaurantImages = [],
   savedFavourites = JSON.parse(localStorage.getItem("favourites")),
@@ -34,10 +32,6 @@ if (!coordinates) {
 if (!query) {
   query = "pizza";
 }
-// logging the parameters to the console
-// console.log(
-//   urlParams.has("type") && urlParams.has("coordinates") && urlParams.has("q")
-// );
 
 // check if the required parameters are present or display error
 function checkParams() {
@@ -49,11 +43,12 @@ function checkParams() {
     fetchRecipes();
   } else {
     console.error("Some parameters are not defined correctly!");
+    window.location = "./home.html";
   }
 }
 
 // fetching data from the endpoints
-// if restaurant
+// for restaurants
 function fetchRestaurants() {
   console.log("Started fetching restaurants");
   fetch(
@@ -67,14 +62,14 @@ function fetchRestaurants() {
     })
     .then(function (data) {
       fetchedData = data.results;
-      restaurantData = data.results;
     })
     .then(function () {
-      for (let i = 0; i < restaurantData.length; i++) {
-        fetchRestaurantImage(restaurantData[i].photos[0].photo_reference);
+      for (let i = 0; i < fetchedData.length; i++) {
+        fetchRestaurantImage(fetchedData[i].photos[0].photo_reference);
       }
     });
 }
+// for restaurant images
 function fetchRestaurantImage(payload) {
   console.log("Started fetching image");
   fetch(
@@ -91,17 +86,16 @@ function fetchRestaurantImage(payload) {
       initialiseRestaurantsView(
         count,
         restaurantImages[count],
-        restaurantData[count].name,
-        restaurantData[count].vicinity,
-        restaurantData[count].rating,
-        restaurantData[count].opening_hours.open_now || false,
-        restaurantData[count].place_id
+        fetchedData[count].name,
+        fetchedData[count].vicinity,
+        fetchedData[count].rating,
+        fetchedData[count].opening_hours.open_now || false,
+        fetchedData[count].place_id
       );
       count++;
     });
 }
-
-// if recipe
+// for recipes
 function fetchRecipes() {
   console.log("Started fetching recipes");
   fetch(
@@ -118,18 +112,17 @@ function fetchRecipes() {
     })
     .then(function (data) {
       fetchedData = data.recipes;
-      recipeData = data.recipes;
     })
     .then(function () {
-      for (let i = 0; i < recipeData.length; i++) {
+      for (let i = 0; i < fetchedData.length; i++) {
         initialiseRecipesView(
           i,
-          recipeData[i].image,
-          recipeData[i].title,
-          recipeData[i].vegan,
-          recipeData[i].extendedIngredients.length,
-          recipeData[i].servings,
-          recipeData[i].sourceUrl
+          fetchedData[i].image,
+          fetchedData[i].title,
+          fetchedData[i].vegan,
+          fetchedData[i].extendedIngredients.length,
+          fetchedData[i].servings,
+          fetchedData[i].sourceUrl
         );
       }
     });
@@ -231,7 +224,6 @@ function initialiseRestaurantsView(
     ref
   );
 }
-
 // create recipe card for each recipe in array
 function initialiseRecipesView(
   index,
@@ -364,6 +356,7 @@ function addRestaurantToFavourites(int) {
   favourites.restaurants.forEach(function (element, index) {
     if (element.name === restaurants[int].name) {
       flag1 -= 1;
+      // Ex. rest. name is at array[2]
     }
   });
   if (flag1 === 0) {
@@ -394,7 +387,7 @@ function isViewInitialised() {
   // check if the no. of card items and length of data array matches
   let checkData = setInterval(function () {
     cardItems = $(".card");
-    if (type === "restaurant" && cardItems.length === restaurantImages.length) {
+    if (type === "restaurant" && cardItems.length === fetchedData.length) {
       console.log("equal length");
       stackCards();
       $("#message").addClass("hidden");
@@ -409,6 +402,7 @@ function isViewInitialised() {
     }
   }, 3000);
 }
+
 // stack the cards
 function stackCards() {
   for (let i = 0; i < cardItems.length; i++) {
@@ -430,7 +424,8 @@ $(document).ready(function () {
     syncLocalStorage(favourites);
   }
 });
-// manage input
+
+// manage user input
 $("#selection").on("click", "button", function () {
   let input = $(this).data("add");
   console.log(input);
@@ -441,7 +436,7 @@ $("#selection").on("click", "button", function () {
   }
   currentCard++;
   if (currentCard === fetchedData.length) {
-    window.location = "/favourites.html";
+    window.location = "./favourites.html";
   } else {
     stackCards();
   }
