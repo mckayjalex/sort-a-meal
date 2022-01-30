@@ -20,6 +20,22 @@ SO THAT I can find something appetizing to eat
 ```
 
 ## ACCEPTANCE CRITERIA
+```
+GIVEN I am indecisive at meal times
+WHEN I use the app
+THEN I am presented with an options to sort between a recipe or a restaurant
+WHEN I make my choice
+THEN I am presented with different categories of food
+WHEN I make my choice
+THEN I am presented a deck of cards with recipies or local restaurants to sort
+WHEN I read the cards
+THNE I am presented with useful infomation
+WHEN I click thumbs up
+THEN the card is saved to my favourites
+WHEN I access my favourites cards
+THEN I am presented with previous cards I have created
+
+```
 
 
 ## PROJECT REQUIRMENTS 
