@@ -1,3 +1,8 @@
+## Elevator pitch
+
+> Sort a Meal help solve the problem of being indecisive at meal time. The app gathers local restaurants or recipes and helps you sort through meal options so you can find what you want.
+
+
 # SORT A MEAL
 
 ## Team members
@@ -6,10 +11,6 @@
 * [Alex](https://github.com/mckayjalex)
 * [Clayton](https://github.com/ClaytonMcIntosh/)
 * [Jaiden](https://github.com/JaidenSP) (concept and planning)
-
-## Elevator pitch
-
-> Sort a Meal help solve the problem of being indecisive at meal time. The app gathers local restaurants or recipes and helps you sort through meal options so you can find what you want.
 
 
 ## USER STORY
