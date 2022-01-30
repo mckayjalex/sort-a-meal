@@ -160,6 +160,7 @@
 // localStorage.setItem('favourites', JSON.stringify(sampleFavouritesObj));
 // Global variables
 let favourites;
+let length;
 
 let restaurantBtn = document.querySelector('#restaurants');
 let recipeBtn = document.querySelector('#recipes');
@@ -209,6 +210,8 @@ recipeBtn.addEventListener('click', function () {
 
 function getData() {
     favourites = JSON.parse(localStorage.getItem('favourites'));
+    restaurantLength = favourites.restaurants.length;
+    recipeLength = favourites.recipes.length;
 }
 
 // Displays all favourite restaurants
@@ -275,7 +278,7 @@ function displayRestaurants(restaurants) {
         link.setAttribute('target', '_blank');
         linkLikeContainer.append(link);
         let like = document.createElement('i');
-        like.setAttribute('data-index', i);
+        // like.setAttribute('data-index', i);
         like.classList.add('text-2xl', 'sm:text-3xl', 'md:text-5xl', 'lg:text-3xl', 'xl:text-5xl', 'fa', 'fa-heart', 'cursor-pointer', 'text-maingreen');
         linkLikeContainer.append(like);
     }
@@ -357,6 +360,23 @@ function displayRecipes(recipes) {
     }
 }
 
+function reloadFavRecipesPage() {
+    setInterval(function() {
+        if(favourites.recipes.length !== recipeLength) {
+            displayRecipes();
+            recipeLength = favourites.recipes.length;
+        }
+    },1000);
+}
+function reloadFavRestaurantsPage() {
+    setInterval(function() {
+        if(favourites.restaurants.length !== restaurantLength) {
+            displayRestaurants();
+            restaurantLength = favourites.restaurants.length;
+        }
+    },1000);
+}
+
 function removeRestaurantFavourites(int) {
     favourites.restaurants.splice(int, 1);
     localStorage.setItem('favourites', JSON.stringify(favourites));
@@ -370,11 +390,13 @@ favContentRecipe.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRecipeFavourites(event.target.dataset.index);
+    reloadFavRecipesPage();
 })
 favContentRestaurant.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRestaurantFavourites(event.target.dataset.index);
+    reloadFavRestaurantsPage();
 })
 
 init();
