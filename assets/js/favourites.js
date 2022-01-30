@@ -274,11 +274,11 @@ function displayRestaurants(restaurants) {
         let link = document.createElement('a');
         link.classList.add('font-boogaloo', 'text-sm', 'sm:text-xl', 'md:text-2xl', 'lg:text-lg', 'xl:text-xl', 'bg-slate-100', 'px-4', 'rounded-md', 'shadow-xl', 'shadow-slate-400', 'hover:bg-slate-300', 'cursor-pointer');
         link.textContent = 'More Info';
-        link.setAttribute('href', restaurants[i].link);
+        link.setAttribute('href', 'https://www.google.com/maps/place/?q=place_id:' + restaurants[i].link);
         link.setAttribute('target', '_blank');
         linkLikeContainer.append(link);
         let like = document.createElement('i');
-        // like.setAttribute('data-index', i);
+        like.setAttribute('data-index', i);
         like.classList.add('text-2xl', 'sm:text-3xl', 'md:text-5xl', 'lg:text-3xl', 'xl:text-5xl', 'fa', 'fa-heart', 'cursor-pointer', 'text-maingreen');
         linkLikeContainer.append(like);
     }
@@ -355,48 +355,51 @@ function displayRecipes(recipes) {
         link.setAttribute('target', '_blank');
         linkLikeContainer.append(link);
         let like = document.createElement('i');
+        like.setAttribute('data-index', i);
         like.classList.add('text-2xl', 'sm:text-3xl', 'md:text-5xl', 'lg:text-3xl', 'xl:text-5xl', 'fa', 'fa-heart', 'cursor-pointer', 'text-maingreen');
         linkLikeContainer.append(like);
     }
 }
 
-function reloadFavRecipesPage() {
-    setInterval(function() {
-        if(favourites.recipes.length !== recipeLength) {
-            displayRecipes();
-            recipeLength = favourites.recipes.length;
-        }
-    },1000);
-}
-function reloadFavRestaurantsPage() {
-    setInterval(function() {
-        if(favourites.restaurants.length !== restaurantLength) {
-            displayRestaurants();
-            restaurantLength = favourites.restaurants.length;
-        }
-    },1000);
-}
+// function reloadFavRecipesPage() {
+//     setInterval(function() {
+//         if(favourites.recipes.length !== recipeLength) {
+//             displayRecipes();
+//             recipeLength = favourites.recipes.length;
+//         }
+//     },1000);
+// }
+// function reloadFavRestaurantsPage() {
+//     setInterval(function() {
+//         if(favourites.restaurants.length !== restaurantLength) {
+//             displayRestaurants();
+//             restaurantLength = favourites.restaurants.length;
+//         }
+//     },1000);
+// }
 
 function removeRestaurantFavourites(int) {
     favourites.restaurants.splice(int, 1);
     localStorage.setItem('favourites', JSON.stringify(favourites));
+    // reloadFavRestaurantsPage();
 }
 function removeRecipeFavourites(int) {
     favourites.recipes.splice(int, 1);
     localStorage.setItem('favourites', JSON.stringify(favourites));
+    // reloadFavRecipesPage();
 }
 // Add link button animation
 favContentRecipe.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRecipeFavourites(event.target.dataset.index);
-    reloadFavRecipesPage();
+    
 })
 favContentRestaurant.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRestaurantFavourites(event.target.dataset.index);
-    reloadFavRestaurantsPage();
+   
 })
 
 init();
