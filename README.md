@@ -9,7 +9,7 @@
 
 ## Elevator pitch
 
-Sort a Meal help solve the problem of being indecisive at meal time. The app gathers local restaurants or recipes and helps you sort through meal options so you can find what you want.
+> Sort a Meal help solve the problem of being indecisive at meal time. The app gathers local restaurants or recipes and helps you sort through meal options so you can find what you want.
 
 
 ## USER STORY
