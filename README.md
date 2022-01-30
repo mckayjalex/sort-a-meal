@@ -13,11 +13,11 @@
 
 
 ## USER STORY
-
+```
 AS AN indecisive eater 
 I WANT an app that cycles through restaurants and recipes
 SO THAT I can find something appetizing to eat
-
+```
 
 ## ACCEPTANCE CRITERIA
 
