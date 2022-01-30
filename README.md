@@ -2,10 +2,10 @@
 
 ## Team members
 
-* [Hari] (https://github.com/hari-ls)
-* [Alex] (https://github.com/mckayjalex)
-* [Clayton] (https://github.com/ClaytonMcIntosh/)
-* [Jaiden] (https://github.com/JaidenSP) (concept and planning)
+* [Hari](https://github.com/hari-ls)
+* [Alex](https://github.com/mckayjalex)
+* [Clayton](https://github.com/ClaytonMcIntosh/)
+* [Jaiden](https://github.com/JaidenSP) (concept and planning)
 
 ## Elevator pitch
 
