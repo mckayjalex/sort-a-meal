@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort A Meal | Categories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/96894b11db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/categories.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        offwhite: '#f8f8f8',
+                        offgrey: '#A9A9A9',
+                        maingreen: '#72b85f',
+                        maingreendark: '#5b984b',
+                        darkgreen: '#003f2c',
+                        mainred: '#e5622d',
+                    },
+                    fontFamily: {
+                        boogaloo: ['Boogaloo', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header
+        class="fixed top-0 w-full shadow-lg shadow-slate-400 mt-0 flex flex-nowrap justify-between items-center bg-maingreendark h-32">
+        <a href="index.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-home"></i></a>
+        <a href="index.html"><img class="cursor-pointer order-1" src="./assets/images/subscreen-logo.svg" alt="Logo"></a>
+            <a href="favourites.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-heart"></i></a>
+    </header>
+    <main class="container px-10 sm:mx-auto mt-44 mb-12">
+        <section
+            class="categories text-center content-center grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-8 sm:gap-12 ">
+            <div id="burgers" data-type="burgers"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/burgers-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12" data-type="burgers">Burgers</h2>
+            </div>
+            <div id="indian" data-type="indian"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/indian-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12" data-type="indian">Indian</h2>
+            </div>
+            <div id="asian" data-type="asian"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/asian-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12" data-type="asian">Asian</h2>
+            </div>
+            <div id="pizza" data-type="pizza"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/pizza-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12" data-type="pizza">Pizza</h2>
+            </div>
+            <div id="thai" data-type="thai"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/thai-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12" data-type="thai">Thai</h2>
+            </div>
+            <div id="pasta" data-type="pasta"
+                class="h-40 sm:h-80 flex flex-col justify-end cursor-pointer bg-cover rounded-2xl shadow-xl shadow-slate-500 bg-[url('./assets/images/pasta-category.jpg')]">
+                <h2 class="font-boogaloo text-4xl h-12 pb-3 bg-white bg-opacity-75 mb-6 sm:mb-12" data-type="pasta">Pasta</h2>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-offgrey p-16 bg-opacity-50">
+        
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="./assets/js/categories.js"></script>
+</body>
+
+</html>
