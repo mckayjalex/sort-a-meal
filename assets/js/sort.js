@@ -1,8 +1,8 @@
 // initialise the fetch variables
 var placesAPI =
-    "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+    "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
   placesPhotoAPI =
-    "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo",
+    "https://maps.googleapis.com/maps/api/place/photo",
   recipesAPI = "https://api.spoonacular.com/recipes/random",
   fetchedData = [],
   restaurants = [],
