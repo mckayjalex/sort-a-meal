@@ -1,8 +1,8 @@
 // initialise the fetch variables
 var placesAPI =
-    "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+    "https://cors-cache-proxy.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json",
   placesPhotoAPI =
-    "https://maps.googleapis.com/maps/api/place/photo",
+    "https://cors-cache-proxy.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo",
   recipesAPI = "https://api.spoonacular.com/recipes/random",
   fetchedData = [],
   restaurants = [],
@@ -26,10 +26,8 @@ var coordinates = urlParams.get("coordinates");
 // check if the required parameters are present or display error
 function checkParams() {
   if (type === "restaurant" && query && coordinates) {
-    // console.log(type, query, coordinates);
     fetchRestaurants();
   } else if (type === "recipe" && query) {
-    // console.log(type, query);
     fetchRecipes();
   } else {
     console.error("Some parameters are not defined correctly!");
@@ -40,7 +38,6 @@ function checkParams() {
 // fetching data from the endpoints
 // for restaurants
 function fetchRestaurants() {
-  console.log("Started fetching restaurants");
   fetch(
     `${placesAPI}?location=${coordinates}&radius=5000&type=restaurant&keyword=${query}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`
   )
@@ -51,7 +48,17 @@ function fetchRestaurants() {
       return response.json();
     })
     .then(function (data) {
-      fetchedData = data.results;
+      data.results.forEach(function (obj) {
+        // only add restaurants which are operational, has opening hours defined and their photo is available
+        if (
+          obj.business_status == "OPERATIONAL" &&
+          obj.opening_hours !== undefined &&
+          obj.photos !== undefined
+        ) {
+          fetchedData.push(obj);
+        }
+      });
+      // fetchedData = data.results;
     })
     .then(function () {
       for (let i = 0; i < fetchedData.length; i++) {
@@ -61,7 +68,6 @@ function fetchRestaurants() {
 }
 // for restaurant images
 function fetchRestaurantImage(payload) {
-  console.log("Started fetching image");
   fetch(
     `${placesPhotoAPI}?maxwidth=400&photo_reference=${payload}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`
   )
@@ -87,7 +93,6 @@ function fetchRestaurantImage(payload) {
 }
 // for recipes
 function fetchRecipes() {
-  console.log("Started fetching recipes");
   fetch(
     `${recipesAPI}?limitLicense=true&tags=${query}&number=10&apiKey=b2a9988857174ce09bca833cfc9bb5f4`,
     {
@@ -132,7 +137,7 @@ function initialiseRestaurantsView(
   let container = $("#cards");
   let card = $("<div>")
     .addClass(
-      "card relative p-6 shadow-xl bg-maingreen ring-1 ring-gray-900/5 max-w-md md:min-w-[28rem] mx-auto rounded-2xl hover:cursor-grab"
+      "card relative p-3 shadow-xl bg-maingreen ring-1 ring-gray-900/5 max-w-md sm:min-w-[80vw] md:min-w-[28rem] mx-auto rounded-2xl hover:cursor-grab"
     )
     .attr("data-index", index);
   let cardInner = $("<div>").addClass(
@@ -190,11 +195,10 @@ function initialiseRestaurantsView(
   statusBox.append(statusIcon, statusData);
   infoTags.append(ratingsBox, statusBox);
 
-  let infoLink = $("<div>").addClass("mt-4 mb-3 text-darkgreen");
-  let linkEl = $("<a>").attr(
-    "href",
-    `https://www.google.com/maps/place/?q=place_id:${ref}`
-  );
+  let infoLink = $("<div>").addClass("my-1 text-darkgreen");
+  let linkEl = $("<a>")
+    .attr("href", `https://www.google.com/maps/place/?q=place_id:${ref}`)
+    .attr("target", "_blank");
   let linkIcon = $("<i>").addClass("fas fa-info-circle");
   let linkText = $("<span>").addClass("pl-2").text("View Info");
   linkEl.append(linkIcon, linkText);
@@ -227,7 +231,7 @@ function initialiseRecipesView(
   let container = $("#cards");
   let card = $("<div>")
     .addClass(
-      "card relative p-6 shadow-xl bg-maingreen ring-1 ring-gray-900/5 max-w-md md:min-w-[28rem] mx-auto rounded-2xl hover:cursor-grab"
+      "card relative p-3 shadow-xl bg-maingreen ring-1 ring-gray-900/5 max-w-md sm:min-w-[80vw] md:min-w-[28rem] mx-auto rounded-2xl hover:cursor-grab"
     )
     .attr("data-index", index);
   let cardInner = $("<div>").addClass(
@@ -264,7 +268,7 @@ function initialiseRecipesView(
   infoVegan.append(veganIcon, veganData);
 
   let infoLines = $("<div>").addClass(
-    "flex flex-col justify-around py-4 divide-y text-gray-800"
+    "flex flex-col justify-around py-2 divide-y text-gray-800"
   );
   let ingrefientsBox = $("<span>").addClass("py-2 px-4");
   let ingredientsIcon = $("<i>").addClass("fas fa-shopping-basket");
@@ -282,8 +286,8 @@ function initialiseRecipesView(
   servingsBox.append(servingsIcon, servingsData);
   infoLines.append(ingrefientsBox, servingsBox);
 
-  let infoLink = $("<div>").addClass("mt-4 mb-3 text-darkgreen");
-  let linkEl = $("<a>").attr("href", ref);
+  let infoLink = $("<div>").addClass("my-1 text-darkgreen");
+  let linkEl = $("<a>").attr("href", ref).attr("target", "_blank");
   let linkIcon = $("<i>").addClass("fas fa-info-circle");
   let linkText = $("<span>").addClass("pl-2").text("View Info");
   linkEl.append(linkIcon, linkText);
@@ -343,10 +347,9 @@ function initialiseRecipesData(
 function addRestaurantToFavourites(int) {
   // to check if the item is already added to favourites
   let flag1 = 0;
-  favourites.restaurants.forEach(function (element, index) {
+  favourites.restaurants.forEach(function (element) {
     if (element.name === restaurants[int].name) {
       flag1 -= 1;
-      // Ex. rest. name is at array[2]
     }
   });
   if (flag1 === 0) {
@@ -378,13 +381,11 @@ function isViewInitialised() {
   let checkData = setInterval(function () {
     cardItems = $(".card");
     if (type === "restaurant" && cardItems.length === fetchedData.length) {
-      console.log("equal length");
       stackCards();
       $("#message").addClass("hidden");
       $(cardsContainer).removeClass("hidden");
       clearInterval(checkData);
     } else if (type === "recipe" && cardItems.length === fetchedData.length) {
-      console.log("equal length");
       stackCards();
       $("#message").addClass("hidden");
       $(cardsContainer).removeClass("hidden");
@@ -418,7 +419,6 @@ $(document).ready(function () {
 // manage user input
 $("#selection").on("click", "button", function () {
   let input = $(this).data("add");
-  console.log(input);
   if (type === "restaurant" && input === "yay") {
     addRestaurantToFavourites(currentCard);
   } else if (type === "recipe" && input === "yay") {
@@ -437,10 +437,7 @@ $("#selection").on("click", "button", function () {
 function setImages(img) {
   var urlCreator = window.URL || window.webkitURL;
   var imgURL = urlCreator.createObjectURL(img);
-  console.log(imgURL);
   restaurantImages.push(imgURL);
-  //   this v works
-  //   $("#card-img").addClass(`bg-[url('${imgURL}')]`);
 }
 // update ratings box background color based on the value
 function setRatingsBg(el, n) {
