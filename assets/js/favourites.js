@@ -1,6 +1,5 @@
 // Global variables
 let favourites;
-let length;
 
 let restaurantBtn = document.querySelector('#restaurants');
 let recipeBtn = document.querySelector('#recipes');
@@ -205,25 +204,26 @@ function displayRecipes(recipes) {
 function removeRestaurantFavourites(int) {
     favourites.restaurants.splice(int, 1);
     localStorage.setItem('favourites', JSON.stringify(favourites));
-    // reloadFavRestaurantsPage();
 }
 function removeRecipeFavourites(int) {
     favourites.recipes.splice(int, 1);
     localStorage.setItem('favourites', JSON.stringify(favourites));
-    // reloadFavRecipesPage();
 }
 // Add link button animation
+// Removal of favourite
 favContentRecipe.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRecipeFavourites(event.target.dataset.index);
-    
+    location.reload();
 })
+// Add link button animation
+// Removal of favourite
 favContentRestaurant.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRestaurantFavourites(event.target.dataset.index);
-   
+    location.reload();
 })
 
 init();
