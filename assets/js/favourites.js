@@ -217,13 +217,11 @@ favContentRecipe.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRecipeFavourites(event.target.dataset.index);
-    
 })
 favContentRestaurant.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRestaurantFavourites(event.target.dataset.index);
-   
 })
 
 init();
