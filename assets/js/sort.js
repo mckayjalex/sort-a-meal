@@ -52,8 +52,12 @@ function fetchRestaurants() {
     })
     .then(function (data) {
       data.results.forEach(function (obj) {
-        // only add restaurants which are operational and their photo is available
-        if (obj.business_status == "OPERATIONAL" && obj.photos !== undefined) {
+        // only add restaurants which are operational, has opening hours defined and their photo is available
+        if (
+          obj.business_status == "OPERATIONAL" &&
+          obj.opening_hours !== undefined &&
+          obj.photos !== undefined
+        ) {
           fetchedData.push(obj);
         }
       });
