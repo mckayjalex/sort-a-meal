@@ -1,8 +1,6 @@
 // initialise the fetch variables
-var placesAPI =
-    "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
-  placesPhotoAPI =
-    "https://maps.googleapis.com/maps/api/place/photo",
+var placesAPI = "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+  placesPhotoAPI = "https://maps.googleapis.com/maps/api/place/photo",
   recipesAPI = "https://api.spoonacular.com/recipes/random",
   fetchedData = [],
   restaurants = [],
@@ -42,7 +40,8 @@ function checkParams() {
 function fetchRestaurants() {
   console.log("Started fetching restaurants");
   fetch(
-    `${placesAPI}?location=${coordinates}&radius=5000&type=restaurant&keyword=${query}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`
+    `${placesAPI}?location=${coordinates}&radius=5000&type=restaurant&keyword=${query}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`,
+    { mode: "no-cors" }
   )
     .then(function (response) {
       if (!response.ok) {
@@ -63,7 +62,8 @@ function fetchRestaurants() {
 function fetchRestaurantImage(payload) {
   console.log("Started fetching image");
   fetch(
-    `${placesPhotoAPI}?maxwidth=400&photo_reference=${payload}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`
+    `${placesPhotoAPI}?maxwidth=400&photo_reference=${payload}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`,
+    { mode: "no-cors" }
   )
     .then(function (ref) {
       return ref.blob();
