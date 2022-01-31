@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort A Meal | Favourites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/96894b11db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/favourites.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        offwhite: '#f8f8f8',
+                        offgrey: '#A9A9A9',
+                        maingreen: '#72b85f',
+                        maingreendark: '#5b984b',
+                        darkgreen: '#003f2c',
+                        mainred: '#e5622d',
+                    },
+                    fontFamily: {
+                        boogaloo: ['Boogaloo', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header class="fixed z-20 top-0 w-full mt-0 flex flex-nowrap justify-between items-center bg-maingreendark h-32">
+        <a href="index.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-home"></i></a>
+        <a href="index.html"><img class="cursor-pointer order-1" src="./assets/images/logo.svg"
+                alt="Logo"></a>
+        <a href="favourites.html"><i class="cursor-pointer text-darkgreen p-6 text-4xl fas fa-heart"></i></a>
+    </header>
+    <div class="mt-44">
+        <div>
+            <nav id="options" class="relative z-0 rounded-lg shadow flex divide-x divide-gray-200" aria-label="Tabs">
+                <!-- Current: "text-gray-900", Default: "text-gray-500 hover:text-gray-700" -->
+                <!-- Restaurants Button -->
+                <a id="restaurants" href="#" data-type="restaurants"
+                    class="text-gray-900 rounded-l-lg group relative min-w-0 flex-1  bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50 focus:z-10"
+                    aria-current="page">
+                    <span>Restaurants</span>
+                    <span id="restaurant-border" aria-hidden="true"
+                        class="bg-maingreendark absolute inset-x-0 bottom-0 h-0.5"></span>
+                </a>
+                <!-- Recipes Button -->
+                <a id="recipes" href="#" data-type="recipes"
+                    class="text-gray-500 hover:text-gray-700 group relative min-w-0 flex-1 bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50 focus:z-10">
+                    <span>Recipes</span>
+                    <span id="recipe-border" aria-hidden="true"
+                        class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <!-- Favourites Header -->
+    <section
+        class="shadow-lg shadow-slate-400 flex justify-center fixed top-32 mx-auto inset-x-0 tab bg-maingreendark h-12 text-2xl text-white w-full font-boogaloo">
+        <h1>Favourites</h1>
+    </section>
+    <!-- Container for favourites data to be added dynamically -->
+    <main class="container px-10 sm:mx-auto mt-10 mb-10">
+        <section id="fav-content-restaurant"
+            class="categories text-center content-center grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 ">
+        </section>
+        <section id="fav-content-recipe"
+            class="categories text-center content-center grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 ">
+        </section>
+    </main>
+    <footer class="w-full bg-offgrey p-12 bg-opacity-50">
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="./assets/js/favourites.js"></script>
+</body>
+
+</html>

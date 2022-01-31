@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sortameal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sort A Meal</title>
+
+  <!-- importing Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/96894b11db.js" crossorigin="anonymous"></script>
+  <!-- importing TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            offwhite: "#f8f8f8",
+            maingreen: "#72b85f",
+            maingreendark: "#5b984b",
+            darkgreen: "#003f2c",
+            mainred: "#e5622d",
+          },
+          fontFamily: {
+            boogaloo: ["Boogaloo", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
 </head>
-<body>
-    
+
+<body class="bg-offwhite">
+  <section>
+    <a href="home.html">
+      <div class="bg-[url('./assets/images/splash.jpg')] skew-2 bg-cover h-64" alt="Sort A Meal Logo"></div>
+      <div class="bg-maingreen h-6 -m-2"></div>
+  </section>
+  <section class="flex flex-col items-center mt-16">
+    <img class="w-full h-32" src="assets/images/icon.svg" />
+    <h1 class="font-boogaloo text-5xl text-center pt-8 text-darkgreen">
+      SORT A MEAL
+    </h1>
+    </a>
+    <div>
+      <!-- place-content-center not working,  -->
+      <a href="favourites.html"><i class="p-10 text-4xl fas fa-heart text-darkgreen"></i></a>
+      <a href="home.html">
+        <button id="sortbtn"
+          class="pt-4 pb-4 pl-10 pr-10 bg-maingreen shadow-md shadow-slate-400 rounded-2xl font-['Open_Sans'] font-bold text-2xl">
+          Sort
+        </button>
+      </a>
+    </div>
+  </section>
+  <script src="./assets/js/index.js"></script>
 </body>
+
 </html>
