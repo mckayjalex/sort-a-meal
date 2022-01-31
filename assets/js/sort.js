@@ -43,6 +43,7 @@ function fetchRestaurants() {
     `${placesAPI}?location=${coordinates}&radius=5000&type=restaurant&keyword=${query}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`,
     {
       method: "GET",
+      mode: "cors",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
@@ -71,6 +72,7 @@ function fetchRestaurantImage(payload) {
     `${placesPhotoAPI}?maxwidth=400&photo_reference=${payload}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`,
     {
       method: "GET",
+      mode: "cors",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
