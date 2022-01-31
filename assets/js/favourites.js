@@ -157,7 +157,7 @@ var sampleFavouritesObj = {
         },
     ],
 };
-localStorage.setItem('favourites', JSON.stringify(sampleFavouritesObj));
+// localStorage.setItem('favourites', JSON.stringify(sampleFavouritesObj));
 // Global variables
 let favourites;
 
@@ -352,6 +352,7 @@ function displayRecipes(recipes) {
         link.setAttribute('target', '_blank');
         linkLikeContainer.append(link);
         let like = document.createElement('i');
+        link.setAttribute('id', 'like-button');
         like.classList.add('text-2xl', 'sm:text-3xl', 'md:text-5xl', 'lg:text-3xl', 'xl:text-5xl', 'fa', 'fa-heart', 'cursor-pointer', 'text-maingreen');
         linkLikeContainer.append(like);
     }
@@ -370,11 +371,13 @@ favContentRecipe.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRecipeFavourites(event.target.dataset.index);
+    location.reload();
 })
 favContentRestaurant.addEventListener('click', function (event) {
     event.target.classList.remove('fa')
     event.target.classList.add('far');
     removeRestaurantFavourites(event.target.dataset.index);
+    location.reload();
 })
 
 init();
