@@ -45,10 +45,6 @@ function fetchRestaurants() {
       method: "GET",
       mode: "cors",
       credentials: "include",
-      headers: {
-        "Access-Control-Allow-Origin": "https://mckayjalex.github.io",
-        "Content-Type": "application/json",
-      },
     }
   )
     .then(function (response) {
@@ -75,10 +71,6 @@ function fetchRestaurantImage(payload) {
       method: "GET",
       mode: "cors",
       credentials: "include",
-      headers: {
-        "Access-Control-Allow-Origin": "https://mckayjalex.github.io",
-        "Content-Type": "application/json",
-      },
     }
   )
     .then(function (ref) {
