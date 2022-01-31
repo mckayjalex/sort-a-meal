@@ -74,7 +74,7 @@ We used [Tailwind CSS](https://tailwindcss.com/) for our CSS framework.
 
 ### Be deployed to GitHub Pages.
 
-Link to final project: (insert link)
+Link to final project: https://mckayjalex.github.io/sort-a-meal/
 
 ### Be interactive (i.e., accept and respond to user input).
 
