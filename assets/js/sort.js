@@ -60,7 +60,12 @@ function fetchRestaurants() {
       return response.json();
     })
     .then(function (data) {
-      fetchedData = data.results;
+      data.results.forEach(function (obj) {
+        if (obj.business_status == "OPERATIONAL") {
+          fetchedData.push(obj);
+        }
+      });
+      // fetchedData = data.results;
     })
     .then(function () {
       for (let i = 0; i < fetchedData.length; i++) {
