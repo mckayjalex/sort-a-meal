@@ -196,10 +196,9 @@ function initialiseRestaurantsView(
   infoTags.append(ratingsBox, statusBox);
 
   let infoLink = $("<div>").addClass("my-1 text-darkgreen");
-  let linkEl = $("<a>").attr(
-    "href",
-    `https://www.google.com/maps/place/?q=place_id:${ref}`
-  );
+  let linkEl = $("<a>")
+    .attr("href", `https://www.google.com/maps/place/?q=place_id:${ref}`)
+    .attr("target", "_blank");
   let linkIcon = $("<i>").addClass("fas fa-info-circle");
   let linkText = $("<span>").addClass("pl-2").text("View Info");
   linkEl.append(linkIcon, linkText);
@@ -288,7 +287,7 @@ function initialiseRecipesView(
   infoLines.append(ingrefientsBox, servingsBox);
 
   let infoLink = $("<div>").addClass("my-1 text-darkgreen");
-  let linkEl = $("<a>").attr("href", ref);
+  let linkEl = $("<a>").attr("href", ref).attr("target", "_blank");
   let linkIcon = $("<i>").addClass("fas fa-info-circle");
   let linkText = $("<span>").addClass("pl-2").text("View Info");
   linkEl.append(linkIcon, linkText);

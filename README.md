@@ -121,3 +121,7 @@ The repository is clean and meets quality coding standards.
 ### Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 This is a quality Readme file with a unique name, description, technologies used, a screenshot and a link the deployed application.
+
+## Application Link
+
+To review the final application from this source code please use the following link: [click here](https://mckayjalex.github.io/sort-a-meal/)
