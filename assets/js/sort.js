@@ -43,15 +43,6 @@ function fetchRestaurants() {
   console.log("Started fetching restaurants");
   fetch(
     `${placesAPI}?location=${coordinates}&radius=5000&type=restaurant&keyword=${query}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`
-    // {
-    //   method: "GET",
-    //   mode: "cors",
-    //   credentials: "include",
-    //   headers: {
-    //     "Access-Control-Allow-Origin": "https://mckayjalex.github.io",
-    //     "Content-Type": "application/json",
-    //   },
-    // }
   )
     .then(function (response) {
       if (!response.ok) {
@@ -61,7 +52,8 @@ function fetchRestaurants() {
     })
     .then(function (data) {
       data.results.forEach(function (obj) {
-        if (obj.business_status == "OPERATIONAL") {
+        // only add restaurants which are operational and their photo is available
+        if (obj.business_status == "OPERATIONAL" && obj.photos !== undefined) {
           fetchedData.push(obj);
         }
       });
@@ -78,15 +70,6 @@ function fetchRestaurantImage(payload) {
   console.log("Started fetching image");
   fetch(
     `${placesPhotoAPI}?maxwidth=400&photo_reference=${payload}&key=AIzaSyC4_oP_4B6Vj4Zf6-SMYRjShWxzpcZOcgc`
-    // {
-    //   method: "GET",
-    //   mode: "cors",
-    //   credentials: "include",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Origin": "https://mckayjalex.github.io",
-    //   },
-    // }
   )
     .then(function (ref) {
       return ref.blob();
@@ -366,10 +349,9 @@ function initialiseRecipesData(
 function addRestaurantToFavourites(int) {
   // to check if the item is already added to favourites
   let flag1 = 0;
-  favourites.restaurants.forEach(function (element, index) {
+  favourites.restaurants.forEach(function (element) {
     if (element.name === restaurants[int].name) {
       flag1 -= 1;
-      // Ex. rest. name is at array[2]
     }
   });
   if (flag1 === 0) {
