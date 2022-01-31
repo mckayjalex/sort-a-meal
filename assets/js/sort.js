@@ -46,7 +46,7 @@ function fetchRestaurants() {
       mode: "cors",
       credentials: "include",
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://mckayjalex.github.io",
         "Content-Type": "application/json",
       },
     }
@@ -76,7 +76,7 @@ function fetchRestaurantImage(payload) {
       mode: "cors",
       credentials: "include",
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://mckayjalex.github.io",
         "Content-Type": "application/json",
       },
     }
